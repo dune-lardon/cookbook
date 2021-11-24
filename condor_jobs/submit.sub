@@ -1,0 +1,18 @@
+# HTCondor queues
+# espresso = 20 minutes, microcentury = 1 hour, longlunch  = 2 hours, workday  = 8 hours, tomorrow  = 1 day, testmatch = 3 days, nextweek = 1 week
+notify_user             = your_email@cern.ch
+# Never, Error, Complete, Always
+notification            = Error
+universe                = vanilla
+executable              = /link/to/the/script/script.sh
+output                  = /path/to/store/output/reco_$(ProcId).out
+error                   = /path/to/store/output/reco_$(ProcId).log
+log                     = /path/to/store/output/reco_$(ProcId).err
+## Force HTCondor not to use shared filesystem
+#priority                = 20
+#request_memory          = 1000 MB
+##request_disk            = 10 GB
++JobFlavour             = "workday"
+#+MaxRuntime             = 90000
+#+RequestCpus            = 1
+queue arguments from runs.txt
